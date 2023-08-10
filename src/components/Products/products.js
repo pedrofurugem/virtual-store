@@ -1,14 +1,15 @@
 import { getProducts } from '../../services/service'
 import { useState, useEffect} from 'react'
 import { styled } from 'styled-components'
+import { Header } from '../Header/index'
+import { Footer } from '../Footer/index'
 
 export const Products = ()=> {
     const [product, setPrducts] = useState([])
     
     useEffect(()=> {
         const fetchData = async () => {
-            const data = await getProducts()
-            //console.log(data)
+            const data = await getProducts()      
             setPrducts(data)
         }
         fetchData()
@@ -16,21 +17,22 @@ export const Products = ()=> {
 
     return(
         <>
-        <h1>Products</h1>
-        <AreaProducts>
-            {
-                product.map((prod, index)=> {
-                    return(
-                        <CardProduct key={index}>
-                            <ImgProduct src={prod.imageUrl} alt=""/>
-                            <p>{prod.name}</p>
-                            <p>R$ {prod.price.toFixed(2)}</p>
-                            <ButtonCart>Adiconar ao carrinho</ButtonCart>
-                        </CardProduct>
-                    )
-                })
-            }
-        </AreaProducts>
+        <Header />
+            <AreaProducts>
+                {
+                    product.map((prod, index)=> {
+                        return(
+                            <CardProduct key={index}>
+                                <ImgProduct src={prod.imageUrl} alt=""/>
+                                <p>{prod.name}</p>
+                                <p>R$ {prod.price.toFixed(2)}</p>
+                                <ButtonCart>Adiconar ao carrinho</ButtonCart>
+                            </CardProduct>
+                        )
+                    })
+                }
+            </AreaProducts>
+        <Footer />
         </>
     )
 }

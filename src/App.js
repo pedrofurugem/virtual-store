@@ -1,4 +1,4 @@
-import { Products } from "./components/Products";
+import { Products } from "./components/Products/products";
 import { createGlobalStyle } from 'styled-components'
 
 function App() {
