@@ -4,7 +4,7 @@ import { styled } from 'styled-components'
 import { Header } from '../Header/index'
 import { Footer } from '../Footer/index'
 
-export const Products = ()=> {
+export const ProductsList = ()=> {
     const [product, setPrducts] = useState([])
     
     useEffect(()=> {
@@ -26,7 +26,8 @@ export const Products = ()=> {
                                 <ImgProduct src={prod.imageUrl} alt=""/>
                                 <p>{prod.name}</p>
                                 <p>R$ {prod.price.toFixed(2)}</p>
-                                <ButtonCart>Adiconar ao carrinho</ButtonCart>
+                                <ButtonCart> + Adiconar ao carrinho</ButtonCart>
+                                <ButtonBuy> Comprar </ButtonBuy>
                             </CardProduct>
                         )
                     })
@@ -70,4 +71,17 @@ const ButtonCart = styled.button`
    font-weight: bold;
    background-color: green;
    border-radius: 5px;
+   margin-top: 8px;
+`
+
+const ButtonBuy = styled.button`
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 10px;
+   color: #FFF;
+   font-weight: bold;
+   background-color: green;
+   border-radius: 5px;
+   margin-top: 8px;
 `

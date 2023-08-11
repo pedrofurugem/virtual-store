@@ -1,11 +1,12 @@
-import { Products } from "./components/Products/products";
+//import { ProductsList } from "./components/ProductsList/productsList";
+import { AppRoutes } from "./components/Pages/routes"
 import { createGlobalStyle } from 'styled-components'
 
 function App() {
   return (
     <>
      <GlobalStyle/>
-     <Products />
+     <AppRoutes />
     </>
   );
 }

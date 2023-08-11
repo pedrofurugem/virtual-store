@@ -26,12 +26,12 @@ const Cabecalho = styled.div`
 `
 
 const Li = styled.li`
-
+  
 `
 
 const A = styled.a`
   text-decoration: none;
-  padding: 15px;
   font-size: 22px;
-  color: #000
+  color: #000;
+  margin: 15px;
 `
