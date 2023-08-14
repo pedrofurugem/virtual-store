@@ -3,6 +3,7 @@ import { useState, useEffect} from 'react'
 import { styled } from 'styled-components'
 import { Header } from '../Header/index'
 import { Footer } from '../Footer/index'
+import { Link } from 'react-router-dom'
 
 export const ProductsList = ()=> {
     const [product, setPrducts] = useState([])
@@ -23,11 +24,11 @@ export const ProductsList = ()=> {
                     product.map((prod, index)=> {
                         return(
                             <CardProduct key={index}>
-                                <ImgProduct src={prod.imageUrl} alt=""/>
-                                <p>{prod.name}</p>
-                                <p>R$ {prod.price.toFixed(2)}</p>
-                                <ButtonCart> + Adiconar ao carrinho</ButtonCart>
-                                <ButtonBuy> Comprar </ButtonBuy>
+                                <Link to={`/products/${prod.id}`}>
+                                    <ImgProduct src={prod.imageUrl} alt=""/>
+                                    <p>{prod.name}</p>
+                                    <p>R$ {prod.price.toFixed(2)}</p>
+                                </Link>
                             </CardProduct>
                         )
                     })
@@ -60,28 +61,4 @@ const CardProduct = styled.li`
    align-items: center;
    justify-content: center;
    border-radius: 5px;
-`
-
-const ButtonCart = styled.button`
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding: 10px;
-   color: #FFF;
-   font-weight: bold;
-   background-color: green;
-   border-radius: 5px;
-   margin-top: 8px;
-`
-
-const ButtonBuy = styled.button`
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding: 10px;
-   color: #FFF;
-   font-weight: bold;
-   background-color: green;
-   border-radius: 5px;
-   margin-top: 8px;
 `
