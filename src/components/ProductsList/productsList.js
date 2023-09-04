@@ -6,12 +6,12 @@ import { Footer } from '../Footer/index'
 import { Link } from 'react-router-dom'
 
 export const ProductsList = ()=> {
-    const [product, setPrducts] = useState([])
+    const [product, setProducts] = useState([])
     
     useEffect(()=> {
         const fetchData = async () => {
             const data = await getProducts()      
-            setPrducts(data)
+            setProducts(data)
         }
         fetchData()
     })

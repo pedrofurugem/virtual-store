@@ -21,32 +21,39 @@ export const ProductsDetails = ()=> {
     }, [id])
 
     const addToCart = ()=> {
-        const productCopy = { ...product }
-        setCartItems([...cartItems, productCopy])
-        setAddedToCartProduct(productCopy)
+        //const productCopy = { ...product }
+        setCartItems([...cartItems, product])
+        setAddedToCartProduct(product)
     }
 
     return(
         <>
             <div>
                 <Link to="/">Voltar</Link>
-                <img src={product.imageUrl} alt=""/>
+                <Img src={product.imageUrl} alt=""/>
                 <p>{product.name}</p>
                 <p>{product.price}</p>
+                <p>Detalhes: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </p>
                 <ButtonCart onClick={ addToCart } > + Adiconar ao carrinho</ButtonCart>
                 <ButtonBuy> Comprar </ButtonBuy>
             </div>
             <Cart cartItems={cartItems} />
             {addedToCartProduct && (
-                <div>
+                <ViewCart>
                     <p>Produto(s) adicionados ao carrinho: </p>
+                    <ImgView  src={product.imageUrl} alt=""/>
                     <p>{addedToCartProduct.name}</p>
                     <p>R$ {addedToCartProduct.price.toFixed(2)}</p>
-                </div>
+                </ViewCart>
             )}
         </>
     )
 }
+
+const Img = styled.img`
+   width: 250px;
+`
 
 const ButtonCart = styled.button`
    display: flex;
@@ -70,4 +77,13 @@ const ButtonBuy = styled.button`
    background-color: green;
    border-radius: 5px;
    margin-top: 8px;
+`
+
+const ViewCart = styled.div`
+  background-color: #DCDCDC
+
+`
+
+const ImgView = styled.img`
+  width: 100px;
 `
