@@ -3,9 +3,12 @@ import { getProductsId } from '../../services/service'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { styled } from 'styled-components'
+import { Cart } from '../Cart/cart'
 
 export const ProductsDetails = ()=> {
     const [product, setProduct] = useState([])
+    const [cartItems, setCartItems] = useState([])
+    const [addedToCartProduct, setAddedToCartProduct] = useState(null)
 
     const {id} = useParams()
 
@@ -17,6 +20,12 @@ export const ProductsDetails = ()=> {
         fetchData()
     }, [id])
 
+    const addToCart = ()=> {
+        const productCopy = { ...product }
+        setCartItems([...cartItems, productCopy])
+        setAddedToCartProduct(productCopy)
+    }
+
     return(
         <>
             <div>
@@ -24,9 +33,17 @@ export const ProductsDetails = ()=> {
                 <img src={product.imageUrl} alt=""/>
                 <p>{product.name}</p>
                 <p>{product.price}</p>
-                <ButtonCart> + Adiconar ao carrinho</ButtonCart>
+                <ButtonCart onClick={ addToCart } > + Adiconar ao carrinho</ButtonCart>
                 <ButtonBuy> Comprar </ButtonBuy>
             </div>
+            <Cart cartItems={cartItems} />
+            {addedToCartProduct && (
+                <div>
+                    <p>Produto(s) adicionados ao carrinho: </p>
+                    <p>{addedToCartProduct.name}</p>
+                    <p>R$ {addedToCartProduct.price.toFixed(2)}</p>
+                </div>
+            )}
         </>
     )
 }
